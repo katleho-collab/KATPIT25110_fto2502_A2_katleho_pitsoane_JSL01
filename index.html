@@ -1,67 +1,71 @@
-<html>
-  <head>
-    <meta />
-    <meta />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav>
-      <div>
-        <h4>ALL BOARDS (1)</h4>
-        <button>Launch Career</button>
-      </div>
-    </nav>
-
-    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div>
-      <header>
-        <div>
-          <h2>Launch Career</h2>
-        </div>
-      </header>
-
-      <div>
-        <main>
-          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div>
-            <div>
-              <span></span>
-              <h4>TODO</h4>
-            </div>
-            <!-- Tasks container for TODO -->
-            <div>
-              <div>Launch Epic Career 🚀</div>
-              <div>Learn Data Structures and Algorithms 📚</div>
-            </div>
-          </div>
-          <!-- DOING Column -->
-          <div>
-            <div>
-              <span></span>
-              <h4>DOING</h4>
-            </div>
-            <!-- Tasks container for DOING -->
-            <div>
-              <div>Master JavaScript 💛</div>
-              <div>Keep on Going 🏆</div>
-            </div>
-          </div>
-          <!-- DONE Column -->
-          <div>
-            <div>
-              <span></span>
-              <h4>DONE</h4>
-            </div>
-            <!-- Tasks container for DONE -->
-            <div>
-              <div>Contribute to Open Source Projects 🌐</div>
-              <div>Build Portfolio Projects 🛠️</div>
-            </div>
-          </div>
-        </main>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Kanban Board</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Sidebar -->
+  <nav class="sidebar">
+    <div class="logo">
+      <img src="assets/logo-light.svg" alt="Kanban Logo" class="logo-icon">
     </div>
-  </body>
+    <div class="boards-section">
+      <h4>ALL BOARDS (1)</h4>
+      <ul>
+        <li><a href="#" class="active">Launch Career</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <header class="board-header">
+      <div class="menu-icon">☰</div>
+      <h2>Launch Career</h2>
+      <button class="add-task-btn">+ Add New Task</button>
+    </header>
+    <main class="kanban-board">
+      <!-- TODO Column -->
+      <div class="task-column todo">
+        <div class="column-header">
+          <span class="column-icon"></span>
+          <h4>TODO (4)</h4>
+        </div>
+        <div class="tasks-container">
+          <div class="task-card">Launch Epic Career 🚀</div>
+          <div class="task-card">Conquer React ⚛️</div>
+          <div class="task-card">Understand Databases 📊</div>
+          <div class="task-card">Crush Frameworks 🖼️</div>
+        </div>
+      </div>
+      <!-- DOING Column -->
+      <div class="task-column doing">
+        <div class="column-header">
+          <span class="column-icon"></span>
+          <h4>DOING (2)</h4>
+        </div>
+        <div class="tasks-container">
+          <div class="task-card">Master JavaScript 💛</div>
+          <div class="task-card">Never Give Up 🏆</div>
+        </div>
+      </div>
+      <!-- DONE Column -->
+      <div class="task-column done">
+        <div class="column-header">
+          <span class="column-icon"></span>
+          <h4>DONE (2)</h4>
+        </div>
+        <div class="tasks-container">
+          <div class="task-card">Explore ES6 Features 🚀</div>
+          <div class="task-card">Have Fun 🥳</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
 </html>
