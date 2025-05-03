@@ -1,180 +1,307 @@
-/* Reset and Base Styles */
+/* ========================
+   Global & Root Variables
+======================== */
 * {
+  box-sizing: border-box; /* Ensures padding and border are included in total element size */
+}
+
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f4f7fd;
+  --primary-font-color: #000000;
+  --secondary-font-color: #828fa3;
+  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
+  --sidebar-width: 300px; /* Sidebar fixed width */
+}
+
+/* ================
+   Base Elements
+================ */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex; /* Allow layout to span horizontally */
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
+  background-color: var(--secondary-color);
+  font-size: 1rem; /* Base font size for rem scaling */
+}
+
+/* ================
+   Sidebar Layout
+================ */
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  border-right: 1px solid #e4ebfa; /* Light divider */
+  width: var(--sidebar-width);
+  height: 100vh;
+}
+
+#side-logo-div {
+  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  display: flex;
+  justify-content: flex-start;
+}
+
+#logo {
+  width: 100%; /* Make logo responsive within container */
+}
+
+.boards-nav-links-div {
+  display: flex;
+  flex-direction: column;
+  color: var(--primary-font-color);
+}
+
+#headline-sidepanel {
+  padding: 0 12px 0 50px; /* Aligns section content from left and right */
+}
+
+h4 {
+  color: var(--secondary-font-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem; /* Makes heading more spaced */
+}
+
+.board-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden; /* Prevents overflowed text/icons from showing */
+}
+
+/* ===============
+   Main Layout
+================ */
+#layout {
+  flex: 1; /* Fills remaining space beside sidebar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+}
+
+/* ===============
+   Header Section
+================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  height: 96px;
+  padding: 0 35px 0 30px;
+  border-bottom: 1px solid #e4ebfa;
+  width: 100%;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+.header-name-div {
+  display: flex;
+  align-items: center;
+}
+
+.logo-mobile {
+  display: none; /* Hidden on desktop; shown on smaller screens */
+}
+
+/* ===============
+   Board Columns
+================ */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+.card-column-main {
   display: grid;
-  grid-template-areas: "sidebar main";
-  grid-template-columns: 250px 1fr;
-  min-height: 100vh;
-  background-color: #E4F4F7;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 304px)
+  ); /* 3 columns with min size */
+  gap: 8px; /* Space between columns */
 }
 
-/* Sidebar Styles */
-.sidebar {
-  grid-area: sidebar;
-  background-color: #FFFFFF;
-  padding: 20px;
-}
-
-.logo {
-  margin-bottom: 30px;
-}
-
-.logo-icon {
-  height: 24px;
-  width: auto;
-}
-
-.boards-section h4 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  color: #A8A4FF;
-}
-
-.boards-section ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.boards-section li a {
-  display: block;
-  padding: 10px;
-  color: #20212C;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.boards-section li a.active {
-  background-color: #635FC7;
-  color: #FFFFFF;
-  border-radius: 0 20px 20px 0;
-  margin-left: -20px;
-  padding-left: 30px;
-}
-
-/* Main Content Styles */
-.main-content {
-  grid-area: main;
-  padding: 20px;
-  background-color: #E4F4F7;
-}
-
-.board-header {
+.column-div {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: -20px -20px 20px -20px;
-  padding: 10px 20px;
-  background-color: #FFFFFF;
-  border-radius: 8px;
-}
-
-.menu-icon {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.board-header h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #20212C;
-}
-
-.add-task-btn {
-  background-color: #635FC7;
-  color: #FFFFFF;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* Kanban Board Styles */
-.kanban-board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  flex-direction: column;
   gap: 20px;
+  padding: 12px;
 }
 
-.task-column {
-  padding: 15px;
-}
-
-.column-header {
+.column-head-div {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  gap: 10px; /* Space between dot and column title */
 }
 
-.column-icon {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 10px;
+.columnHeader {
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  color: var(--secondary-font-color);
+  margin: 0;
 }
 
-.todo .column-icon { background-color: #24aefd; }
-.doing .column-icon { background-color: #7e63a3; }
-.done .column-icon { background-color: #039933; }
-
-.column-header h4 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #20212C;
+/* Status Dots */
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%; /* Make it circular */
+  display: inline-block;
 }
 
+#todo-dot {
+  background-color: #49c4e5;
+}
+
+#doing-dot {
+  background-color: #8471f2;
+}
+
+#done-dot {
+  background-color: #219c90;
+}
+
+/* ===============
+   Task Cards
+================ */
 .tasks-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.task-card {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #20212C;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.task-div {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  border-radius: 12px;
+  box-shadow: var(--primary-box-shadow);
+  cursor: pointer; /* Indicate it's clickable */
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  font-weight: bold;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  body {
-    grid-template-areas:
-      "main"
-      "sidebar";
-    grid-template-columns: 1fr;
+/* ===============
+   Headings
+================ */
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ========================
+   Responsive Styles
+======================== */
+
+/******** Tablets ********/
+@media screen and (max-width: 1023px) {
+  .side-bar {
+    display: none; /* Hide sidebar on tablets and smaller */
   }
 
-  .sidebar {
+  .side-bar.show-sidebar {
+    display: flex !important;
+    position: fixed; /* Overlay on top of page */
+    height: auto;
+  }
+
+  #side-logo-div {
     display: none;
   }
 
-  .menu-icon {
+  .logo-mobile {
     display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
   }
 
-  .kanban-board {
-    grid-template-columns: 1fr;
+  body {
+    font-size: 0.8rem;
   }
 
-  .task-column {
-    margin-bottom: 20px;
+  .board-btn {
+    font-size: 0.8rem;
+    padding-left: 15px;
+    margin-right: 15px;
+    font-weight: 700;
   }
 
-  .board-header {
-    justify-content: space-between;
+  .container {
+    padding: 0;
+    width: 100%;
+    align-items: center; /* Center columns on smaller screens */
+  }
+
+  .card-column-main {
+    grid-template-columns: repeat(2, minmax(0, 360px));
+    gap: 8px;
+  }
+
+  header {
+    height: 64px;
+    padding: 0 10px 0 18px;
+    border: none;
+  }
+
+  #header-board-name {
+    font-size: 1rem;
+  }
+
+  .task-div {
+    width: 100%;
+  }
+
+  .columnHeader {
+    font-size: 0.75rem;
+  }
+
+  .dot {
+    height: 8px;
+    width: 8px;
+  }
+
+  .column-head-div {
+    gap: 8px;
+  }
+
+  .column-div {
+    width: 100%;
+  }
+}
+
+/******** Mobile ********/
+@media screen and (max-width: 576px) {
+  .card-column-main {
+    grid-template-columns: minmax(
+      0,
+      380px
+    ); /* Stack columns in single column */
+  }
+
+  .column-div {
+    padding: 24px;
   }
 }
